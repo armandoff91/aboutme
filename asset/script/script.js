@@ -20,12 +20,17 @@ function expand() {
 var expand2 = () => {
     var expandables = document.getElementsByClassName("expandable");
     var inspector = document.getElementById("inspector");
+
+    // inspector is empty before clicked
     for (var i=0; i < expandables.length; i++) {
         expandables[i].addEventListener("click", (event) => {
-            console.log("expandable clicked.");
+
+            // When click, its style is changed
             inspector.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
             inspector.style.zIndex = "1";
             inspector.style.position = "fixed";
+
+            // copies the target's src and paste it to the inspector
             $("#inspectorImg").attr("src", event.target.src);
         })
     }
@@ -38,8 +43,6 @@ var expand2 = () => {
     }
     return "expand2 active"
 };
-
-expand2();
 
 var navMouseover = () => {
     var myNavlinks = document.getElementsByClassName("myNavlink");
@@ -56,8 +59,6 @@ var navMouseover = () => {
     return "navMouseover active"
 };
 
-navMouseover()
-
 var navToggle = () => {
     window.addEventListener("scroll", (event) => {
         console.log(window.scrollY);
@@ -68,6 +69,8 @@ var navToggle = () => {
             $("#myNav").fadeIn();
         }
     })
-}
+};
 
-navToggle()
+navMouseover();
+navToggle();
+expand2();
